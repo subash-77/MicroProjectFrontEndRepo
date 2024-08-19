@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Convenient Appointment Scheduling",
+    "price": "47,043",
+    "detail": "Easily schedule appointments at your convenience.",
+    "image": "./3.jpg"
+  },
+  {
+    "name": "Efficient Electronic Health Records (EHR)",
+    "price": "66,353",
+    "detail": "Access and manage your health records securely online.",
+    "image": "./4.jpg"
+  },
+  {
+    "name": "Engage and Connect with Your Provider",
+    "price": "35,853",
+    "detail": "Stay connected and engaged with your psychiatric care team.",
+    "image": "./3.jpg"
+  },
+  {
+    "name": "Convenient Appointment Scheduling",
+    "price": "47,043",
+    "detail": "Easily schedule appointments at your convenience.",
+    "image": "./4.jpg"
+  },
+  {
+    "name": "Efficient Electronic Health Records (EHR)",
+    "price": "66,353",
+    "detail": "Access and manage your health records securely online.",
+    "image": "./3.jpg"
+  },
+  {
+    "name": "Engage and Connect with Your Provider",
+    "price": "35,853",
+    "detail": "Stay connected and engaged with your psychiatric care team.",
+    "image": "./4.jpg"
+  }
+]
