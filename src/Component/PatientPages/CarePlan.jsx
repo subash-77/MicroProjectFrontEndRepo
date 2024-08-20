@@ -38,11 +38,12 @@ const CarePlan = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
   const patientId = sessionStorage.getItem('patientid');
+ 
   const items = [
     {
       id: 1,
       title: 'Deep Breathing Exercises',
-      image: 'logo.png',
+      image: './3.jpg',
       description: (
         <ul>
           <li>Reduces stress and anxiety</li>
@@ -61,7 +62,7 @@ const CarePlan = () => {
     {
       id: 2,
       title: 'Progressive Muscle Relaxation',
-      image: 'logo.png',
+      image: '4.jpg',
       description: (
         <ul>
           <li>Reduces muscle tension</li>
@@ -79,7 +80,7 @@ const CarePlan = () => {
     {
       id: 3,
       title: 'Gentle Yoga Stretches',
-      image: 'logo.png',
+      image: '4.jpg',
       description: (
         <ul>
           <li>Improves flexibility and relaxation</li>
@@ -95,7 +96,7 @@ const CarePlan = () => {
     {
       id: 4,
       title: 'Mindfulness Meditation',
-      image: 'logo.png',
+      image: '3.jpg',
       description: (
         <ul>
           <li>Promotes mental clarity and focus</li>
@@ -112,7 +113,7 @@ const CarePlan = () => {
     {
       id: 5,
       title: 'Tai Chi',
-      image: 'logo.png',
+      image: '3.jpg',
       description: (
         <ul>
           <li>Improves balance and coordination</li>
@@ -129,7 +130,7 @@ const CarePlan = () => {
     {
       id: 6,
       title: 'Walking',
-      image: 'logo.png',
+      image: '4.jpg',
       description: (
         <ul>
           <li>Boosts mood and reduces anxiety</li>
@@ -146,7 +147,7 @@ const CarePlan = () => {
     {
       id: 7,
       title: 'Simple Strength Training',
-      image: 'logo.png',
+      image: '3.jpg',
       description: (
         <ul>
           <li>Improves mood and self-esteem</li>
@@ -163,7 +164,7 @@ const CarePlan = () => {
     {
       id: 8,
       title: 'Guided Imagery',
-      image: 'logo.png',
+      image: '4.jpg',
       description: (
         <ul>
           <li>Reduces stress and anxiety</li>
@@ -181,7 +182,7 @@ const CarePlan = () => {
     {
       id: 9,
       title: 'Breathing Techniques',
-      image: 'logo.png',
+      image: '3.jpg',
       description: (
         <ul>
           <li>Helps to control anxiety and stress</li>
@@ -199,7 +200,7 @@ const CarePlan = () => {
     {
       id: 10,
       title: 'Chair Yoga',
-      image: 'logo.png',
+      image: '4.jpg',
       description: (
         <ul>
           <li>Improves flexibility and relaxation</li>
@@ -216,7 +217,7 @@ const CarePlan = () => {
     {
       id: 11,
       title: 'Cognitive Behavioral Exercises',
-      image: 'logo.png',
+      image: '3.jpg',
       description: (
         <ul>
           <li>Helps in managing anxiety and depression</li>
@@ -233,7 +234,7 @@ const CarePlan = () => {
     {
       id: 12,
       title: 'Visualization Techniques',
-      image: 'logo.png',
+      image: '4.jpg',
       description: (
         <ul>
           <li>Promotes relaxation and mental focus</li>
@@ -250,7 +251,7 @@ const CarePlan = () => {
     {
       id: 13,
       title: 'Self-Massage Techniques',
-      image: 'logo.png',
+      image: '4.jpg',
       description: (
         <ul>
           <li>Reduces muscle tension and stress</li>
@@ -268,7 +269,7 @@ const CarePlan = () => {
     {
       id: 14,
       title: 'Journaling',
-      image: 'logo.png',
+      image: '3.jpg',
       description: (
         <ul>
           <li>Helps in processing emotions and thoughts</li>
@@ -285,7 +286,7 @@ const CarePlan = () => {
     {
       id: 15,
       title: 'Gratitude Exercises',
-      image: 'logo.png',
+      image: '4.jpg',
       description: (
         <ul>
           <li>Improves overall emotional well-being</li>

@@ -62,6 +62,12 @@ const BookAppointment = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
+
+        // Additional validation for age to prevent negative numbers
+        if (name === 'age' && value < 0) {
+            return; // Prevent updating the state with negative values
+        }
+
         setFormData(prevState => ({
             ...prevState,
             [name]: value
@@ -150,8 +156,8 @@ const BookAppointment = () => {
     };
 
     return (
-        <main className="flex-1 overflow-auto mt-16 max-h-[calc(100vh-4rem)]">
-            <div className="max-w-lg mx-auto p-6 ml-64 bg-white rounded-lg shadow-lg">
+        <main className="flex-1 overflow-auto max-h-[calc(100vh-4rem)]">
+            <div className="max-w-lg mx-auto p-6 ml-64  bg-white rounded-lg shadow-lg">
                 <h2 className="text-2xl font-semibold mb-4 text-gray-900">Book Appointment</h2>
                 <form onSubmit={handleSubmit} className=''>
                     {selectedPsychiatrist && (
@@ -240,6 +246,7 @@ const BookAppointment = () => {
                             name="age"
                             value={formData.age}
                             onChange={handleChange}
+                            min="0" // Prevents negative numbers
                             className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm bg-white text-gray-700 p-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
                             required
                         />
@@ -294,7 +301,7 @@ const BookAppointment = () => {
                         </button>
                         <button
                             type="button"
-                            onClick={() => navigate('/patientlayout')}
+                            onClick={() => navigate('/appointment')}
                             className="px-4 py-2 bg-gray-500 text-white rounded-md shadow-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50"
                         >
                             Cancel

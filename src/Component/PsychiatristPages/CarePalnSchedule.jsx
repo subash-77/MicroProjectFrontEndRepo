@@ -7,7 +7,7 @@ const items = [
     {
       id: 1,
       title: 'Deep Breathing Exercises',
-      image: 'logo.png',
+      image: './3.jpg',
       description: (
         <ul>
           <li>Reduces stress and anxiety</li>
@@ -26,7 +26,7 @@ const items = [
     {
       id: 2,
       title: 'Progressive Muscle Relaxation',
-      image: 'logo.png',
+      image: '4.jpg',
       description: (
         <ul>
           <li>Reduces muscle tension</li>
@@ -44,7 +44,7 @@ const items = [
     {
       id: 3,
       title: 'Gentle Yoga Stretches',
-      image: 'logo.png',
+      image: '4.jpg',
       description: (
         <ul>
           <li>Improves flexibility and relaxation</li>
@@ -60,7 +60,7 @@ const items = [
     {
       id: 4,
       title: 'Mindfulness Meditation',
-      image: 'logo.png',
+      image: '3.jpg',
       description: (
         <ul>
           <li>Promotes mental clarity and focus</li>
@@ -77,7 +77,7 @@ const items = [
     {
       id: 5,
       title: 'Tai Chi',
-      image: 'logo.png',
+      image: '3.jpg',
       description: (
         <ul>
           <li>Improves balance and coordination</li>
@@ -94,7 +94,7 @@ const items = [
     {
       id: 6,
       title: 'Walking',
-      image: 'logo.png',
+      image: '4.jpg',
       description: (
         <ul>
           <li>Boosts mood and reduces anxiety</li>
@@ -111,7 +111,7 @@ const items = [
     {
       id: 7,
       title: 'Simple Strength Training',
-      image: 'logo.png',
+      image: '3.jpg',
       description: (
         <ul>
           <li>Improves mood and self-esteem</li>
@@ -128,7 +128,7 @@ const items = [
     {
       id: 8,
       title: 'Guided Imagery',
-      image: 'logo.png',
+      image: '4.jpg',
       description: (
         <ul>
           <li>Reduces stress and anxiety</li>
@@ -146,7 +146,7 @@ const items = [
     {
       id: 9,
       title: 'Breathing Techniques',
-      image: 'logo.png',
+      image: '3.jpg',
       description: (
         <ul>
           <li>Helps to control anxiety and stress</li>
@@ -164,7 +164,7 @@ const items = [
     {
       id: 10,
       title: 'Chair Yoga',
-      image: 'logo.png',
+      image: '4.jpg',
       description: (
         <ul>
           <li>Improves flexibility and relaxation</li>
@@ -181,7 +181,7 @@ const items = [
     {
       id: 11,
       title: 'Cognitive Behavioral Exercises',
-      image: 'logo.png',
+      image: '3.jpg',
       description: (
         <ul>
           <li>Helps in managing anxiety and depression</li>
@@ -198,7 +198,7 @@ const items = [
     {
       id: 12,
       title: 'Visualization Techniques',
-      image: 'logo.png',
+      image: '4.jpg',
       description: (
         <ul>
           <li>Promotes relaxation and mental focus</li>
@@ -215,7 +215,7 @@ const items = [
     {
       id: 13,
       title: 'Self-Massage Techniques',
-      image: 'logo.png',
+      image: '4.jpg',
       description: (
         <ul>
           <li>Reduces muscle tension and stress</li>
@@ -233,7 +233,7 @@ const items = [
     {
       id: 14,
       title: 'Journaling',
-      image: 'logo.png',
+      image: '3.jpg',
       description: (
         <ul>
           <li>Helps in processing emotions and thoughts</li>
@@ -250,7 +250,7 @@ const items = [
     {
       id: 15,
       title: 'Gratitude Exercises',
-      image: 'logo.png',
+      image: '4.jpg',
       description: (
         <ul>
           <li>Improves overall emotional well-being</li>

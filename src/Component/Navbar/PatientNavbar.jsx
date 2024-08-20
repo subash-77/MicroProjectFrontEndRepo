@@ -3,13 +3,13 @@ import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { FaBell, FaUser } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
 import axios from "axios";
+import Toast from './Toast';
 
 const PatientNavbar = () => {
   const [open, setOpen] = useState(true);
   const [profileOpen, setProfileOpen] = useState(false);
-  const [isTokenValid, setIsTokenValid] = useState(true);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [notificationCount, setNotificationCount] = useState(0); // State for notifications
+  const [notificationCount, setNotificationCount] = useState(0);
+  const [showToast, setShowToast] = useState(false);
   const navigate = useNavigate();
   const id = sessionStorage.getItem('patientid');
 
@@ -27,11 +27,7 @@ const PatientNavbar = () => {
       const decodedToken = decodeToken(token);
       if (decodedToken.exp * 1000 < Date.now()) {
         handleLogout();
-      } else {
-        setIsLoggedIn(true);
       }
-    } else {
-      setIsLoggedIn(false);
     }
   }, []);
 
@@ -44,14 +40,20 @@ const PatientNavbar = () => {
             const notifications = response.data.filter(record =>
               record.appointment.some(app => app.status === 'scheduled' || app.status === 'cancel')
             );
-            setNotificationCount(notifications.length);
+            const newNotificationCount = notifications.length;
+            if (newNotificationCount > notificationCount) {
+              setNotificationCount(newNotificationCount);
+              setShowToast(true);
+            } else {
+              setNotificationCount(newNotificationCount);
+            }
           }
         })
         .catch((err) => {
           console.log(err);
         });
     }
-  }, [id]);
+  }, [id, notificationCount]);
 
   const decodeToken = (token) => {
     try {
@@ -64,13 +66,16 @@ const PatientNavbar = () => {
   const handleLogout = () => {
     sessionStorage.removeItem("token");
     sessionStorage.removeItem("role");
-    setIsTokenValid(false);
     window.alert("Successfully Logout - Session Expired");
     navigate('/');
   };
 
   const handleBellClick = () => {
-    navigate('/waitingroom'); // Navigate to the WaitingRoom component
+    navigate('/waitingroom');
+  };
+
+  const handleToastClose = () => {
+    setShowToast(false);
   };
 
   return (
@@ -86,11 +91,6 @@ const PatientNavbar = () => {
           onClick={() => setOpen(!open)}
         />
         <div className="flex gap-x-4 items-center">
-          {/* <img
-            src=""
-            alt="logo_image"
-            className={`cursor-pointer transition-transform duration-300 ${open && "rotate-[360deg]"}`}
-          /> */}
           <h1
             className={`text-white origin-left font-medium text-xl transition-transform duration-300 ${
               !open && "scale-0"
@@ -158,9 +158,17 @@ const PatientNavbar = () => {
         </div>
 
         {/* Rendered Content Area */}
-        <main className="flex-1 overflow-auto mt-30"> {/* Adjust mt-16 based on top bar height */}
-          <Outlet /> {/* This is where the route components will be rendered */}
+        <main className="flex-1 overflow-auto mt-16"> {/* Adjust mt-16 based on top bar height */}
+          <Outlet />
         </main>
+
+        {/* Show Toast if showToast is true */}
+        {showToast && (
+          <Toast
+            message="You have new notifications!"
+            onClose={handleToastClose}
+          />
+        )}
       </div>
     </div>
   );

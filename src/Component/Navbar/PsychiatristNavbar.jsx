@@ -4,6 +4,7 @@ import { FaBell, FaUser } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
 import axios from "axios";
 import Modal from './PsychiatristProfileUpdateModal'; // Import the Modal component
+import Toast from "./Toast";
 
 const PsychiatristNavbar = () => {
   const [open, setOpen] = useState(true);
@@ -15,6 +16,7 @@ const PsychiatristNavbar = () => {
   const [notificationCount, setNotificationCount] = useState(0); // State for notifications
   const [profile, setProfile] = useState(null); // State for profile data
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showToast, setShowToast] = useState(false);
   const navigate = useNavigate();
   const id = sessionStorage.getItem('psyid');
 
@@ -66,6 +68,7 @@ const PsychiatristNavbar = () => {
               record.status === 'scheduled'
             );
             setNotificationCount(notifications.length);
+            setShowToast(true);
 
             // console.log(JSON.stringify(response.data, null, 2));
           }
@@ -106,6 +109,10 @@ const PsychiatristNavbar = () => {
 
   const handleProfileUpdate = (updatedProfile) => {
     setProfile(updatedProfile);
+  };
+
+  const handleToastClose = () => {
+    setShowToast(false);
   };
 
   return (
@@ -195,6 +202,7 @@ const PsychiatristNavbar = () => {
           <Outlet /> {/* This is where the route components will be rendered */}
         </main>
       </div>
+      
 
       {isModalOpen && profile && (
         <Modal
@@ -204,7 +212,15 @@ const PsychiatristNavbar = () => {
           onUpdate={handleProfileUpdate}
         />
       )}
+      {/* Show Toast if showToast is true */}
+      {showToast && (
+          <Toast
+            message="You have new notifications!"
+            onClose={handleToastClose}
+          />
+        )}
     </div>
+
   );
 };
 

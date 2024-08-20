@@ -65,12 +65,12 @@ const App = () => {
                 <Route path='/' element={<AllLandingComponent />} />
                 <Route path='/register' element={<Register />} />
                 <Route path='/login' element={<Login />} />
-                <Route path='/login/register' element={<Register />} />
+                {/* <Route path='/login/register' element={<Register />} /> */}
                 <Route path='/patientlayout' element={<PatientLayout />} />
 
             </Routes>
 
-            <Routes>
+            {/* <Routes>
                 <Route element={<PatientLayout />}>
                     <Route path="/appointment" element={<ProtectedRoute element={<Appointment />} />} />
                     <Route path="/book-appointment" element={<ProtectedRoute element={<BookAppointment />} />} />
@@ -79,22 +79,47 @@ const App = () => {
                     <Route path="/patientengagement"  element={<ProtectedRoute element={<PatientEngagement />} />} />
                     <Route path="/careplan"  element={<ProtectedRoute element={<CarePlan />} />} />
                 </Route>
+            </Routes> */}
+            <Routes>
+                <Route element={<PatientLayout />}>
+                    <Route path="/appointment" element={<ProtectedRoute element={<Appointment />} requiredRole="patient" />} />
+                    <Route path="/book-appointment" element={<ProtectedRoute element={<BookAppointment />} requiredRole="patient" />} />
+                    <Route path="/ehr" element={<ProtectedRoute element={<EHR />} requiredRole="patient" />} />
+                    <Route path="/waitingroom" element={<ProtectedRoute element={<WaitingRoom />} requiredRole="patient" />} />
+                    <Route path="/patientengagement" element={<ProtectedRoute element={<PatientEngagement />} requiredRole="patient" />} />
+                    <Route path="/careplan" element={<ProtectedRoute element={<CarePlan />} requiredRole="patient" />} />
+                </Route>
             </Routes>
 
-            <Routes>
+            {/* <Routes>
                 <Route element={<PsychiatristLayout />}>
                     <Route path="/patientehr" element={<ProtectedRoute element={<PatientEhr />} />} />
                     <Route path="/viewassignedappointment" element={<ProtectedRoute element={<ViewAppointment />} />} />
                     <Route path="/careplanschedule" element={<ProtectedRoute element={<CarePlanSchedule />} />} />
                 </Route>
+            </Routes> */}
+            <Routes>
+                <Route element={<PsychiatristLayout />}>
+                    <Route path="/patientehr" element={<ProtectedRoute element={<PatientEhr />} requiredRole="psychiatrist" />} />
+                    <Route path="/viewassignedappointment" element={<ProtectedRoute element={<ViewAppointment />} requiredRole="psychiatrist" />} />
+                    <Route path="/careplanschedule" element={<ProtectedRoute element={<CarePlanSchedule />} requiredRole="psychiatrist" />} />
+                </Route>
             </Routes>
 
+            {/* <Routes>
+                <Route element={<AdminLayout />}>
+                    <Route path="/dashboard" element={<ProtectedRoute element={<Dashboard />} />} />
+                    <Route path="/adminappointment" element={<ProtectedRoute element={<AdminAppointment />} />} />
+                    <Route path="/psychiatristrecord" element={<ProtectedRoute element={<PsychiatristRecords />} />} />
+                    <Route path="/patientrecord" element={<ProtectedRoute element={<PatientRecords />} />} />
+                </Route>
+            </Routes> */}
             <Routes>
                 <Route element={<AdminLayout />}>
-                    <Route path="/dashboard"  element={<ProtectedRoute element={<Dashboard />}  />} />
-                    <Route path="/adminappointment"  element={<ProtectedRoute element={<AdminAppointment/>} />} />
-                    <Route path="/psychiatristrecord"  element={<ProtectedRoute element={<PsychiatristRecords />}  />} />
-                    <Route path="/patientrecord"  element={<ProtectedRoute element={<PatientRecords />} />} />
+                    <Route path="/dashboard" element={<ProtectedRoute element={<Dashboard />} requiredRole="admin" />} />
+                    <Route path="/adminappointment" element={<ProtectedRoute element={<AdminAppointment />} requiredRole="admin" />} />
+                    <Route path="/psychiatristrecord" element={<ProtectedRoute element={<PsychiatristRecords />} requiredRole="admin" />} />
+                    <Route path="/patientrecord" element={<ProtectedRoute element={<PatientRecords />} requiredRole="admin" />} />
                 </Route>
             </Routes>
 

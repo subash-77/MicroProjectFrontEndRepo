@@ -135,7 +135,8 @@ const PsychiatristRecords = () => {
   };
 
   return (
-    <div className="p-6">
+    
+    <div className="p-6 mt-8">
       <h1 className="text-2xl font-bold mb-4">Psychiatrist Records</h1>
       <div className="mb-4">
         <input

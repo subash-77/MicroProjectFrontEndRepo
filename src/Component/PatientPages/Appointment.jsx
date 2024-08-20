@@ -92,21 +92,23 @@ const Appointment = () => {
     };
 
     return (
-        <main className="flex-1 overflow-auto mt-16 ml-24 max-h-[calc(100vh-4rem)]">
+        <main className="flex-1 overflow-auto ml-24 max-h-[calc(100vh-4rem)]">
             {/* Filter Dropdown */}
             <div className="mb-4 p-4">
                 <label htmlFor="specialization" className="block text-sm font-medium text-gray-700">Filter by Specialization</label>
-                <select
-                    id="specialization"
-                    value={specializationFilter}
-                    onChange={handleFilterChange}
-                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm"
-                >
-                    <option value="">All Specializations</option>
-                    {specializationOptions.map((specialization, index) => (
-                        <option key={index} value={specialization}>{specialization}</option>
-                    ))}
-                </select>
+                <div className="relative mt-1">
+                    <select
+                        id="specialization"
+                        value={specializationFilter}
+                        onChange={handleFilterChange}
+                        className="block w-full border border-gray-300 rounded-md shadow-sm bg-white transition-transform transform ease-in-out duration-300 hover:border-blue-500 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                    >
+                        <option value="">All Specializations</option>
+                        {specializationOptions.map((specialization, index) => (
+                            <option key={index} value={specialization}>{specialization}</option>
+                        ))}
+                    </select>
+                </div>
             </div>
 
             {/* Card Grid */}
@@ -116,10 +118,10 @@ const Appointment = () => {
                         <div className="p-4">
                             <h3 className="text-xl font-semibold">{psychiatrist.username}</h3>
                             <p className="text-gray-500">{psychiatrist.specialization}</p>
-                            <p className="mt-2 text-lg font-bold">Fees: ${psychiatrist.fees}</p>
+                            <p className="mt-2 text-lg font-bold">Fees: ₹{psychiatrist.fees}</p>
                             <button
                                 onClick={() => handleCardClick(psychiatrist)}
-                                className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                                className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-300"
                             >
                                 View Details
                             </button>
@@ -130,8 +132,8 @@ const Appointment = () => {
 
             {/* Modal for Psychiatrist Details */}
             {selectedPsychiatrist && (
-                <div className={`fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center ${showModal ? 'block' : 'hidden'}`}>
-                    <div className="bg-white rounded-lg shadow-lg max-w-lg w-full mx-4">
+                <div className={`fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center transition-opacity duration-300 ${showModal ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+                    <div className="bg-white rounded-lg shadow-lg max-w-lg w-full mx-4 transform transition-transform duration-300 ease-in-out">
                         <div className="p-6">
                             <h2 className="text-2xl font-semibold mb-4">{selectedPsychiatrist.username}</h2>
                             <p><strong>Specialization:</strong> {selectedPsychiatrist.specialization}</p>
@@ -145,13 +147,13 @@ const Appointment = () => {
                             <div className="flex justify-end space-x-4 mt-4">
                                 <button
                                     onClick={handleBookAppointment}
-                                    className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+                                    className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition-colors duration-300"
                                 >
                                     Book Appointment
                                 </button>
                                 <button
                                     onClick={handleCloseModal}
-                                    className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
+                                    className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition-colors duration-300"
                                 >
                                     Close
                                 </button>
