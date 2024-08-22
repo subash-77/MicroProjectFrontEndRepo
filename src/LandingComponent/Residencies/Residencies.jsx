@@ -11,10 +11,10 @@ const Residencies = () => {
       <div className="paddings innerWidth r-container">
         <div className="r-head  justify-center text-center">
           <div className="justify-center text-center">
-          <span className="orangeText ">Empowering You to Access Quality Psychiatric Care</span>
+          <span className="orangeText " role="H1">Empowering You to Access Quality Psychiatric Care</span>
           </div>
           <br></br>
-          <span className="secondaryText ">Our telepsychiatry services management systems provide a seamless and convenient way to receive psychiatric care remotely. With features such as appointment scheduling, electronic health records (EHR), and patient engagement tools, we aim to improve access to mental health care and overcome barriers to seeking help.</span>
+          <span className="secondaryText " role="H2">Our telepsychiatry services management systems provide a seamless and convenient way to receive psychiatric care remotely. With features such as appointment scheduling, electronic health records (EHR), and patient engagement tools, we aim to improve access to mental health care and overcome barriers to seeking help.</span>
         </div>
         <Swiper {...sliderSettings}>
             <SliderButtons/> 

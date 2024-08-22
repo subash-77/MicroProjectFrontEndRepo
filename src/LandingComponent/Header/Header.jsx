@@ -21,10 +21,10 @@ const Header = () => {
         >
           <div className="h-menu flexCenter" style={getMenuStyles(menuOpened)}>
 
-            <a href="#Home">Home</a>
-            <a href="#services">Service</a>
-            <a href="#Footer">About Us</a>
-            <a href="#contactUs">Contact Us</a>
+            <a href="#Home" role="H1">Home</a>
+            <a href="#services" role="H2">Service</a>
+            <a href="#Footer" role="H3">About Us</a>
+            <a href="#contactUs" role="H4">Contact Us</a>
 
             <button className="button">
               {/* <a href="/login">Register</a> */}

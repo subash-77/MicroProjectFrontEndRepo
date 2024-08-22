@@ -5,20 +5,46 @@ import { IoIosArrowDown } from "react-icons/io";
 import axios from "axios";
 import Toast from './Toast';
 
+
+// Modal component (as defined earlier)
+const Modal = ({ isOpen, onClose, message }) => {
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+      <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full">
+        <p className="mt-4">{message}</p>
+        <div className="mt-4 flex justify-end">
+          <button
+            onClick={onClose}
+            className="bg-blue-500 text-white px-4 py-2 rounded"
+          >
+            OK
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const PatientNavbar = () => {
   const [open, setOpen] = useState(true);
   const [profileOpen, setProfileOpen] = useState(false);
   const [notificationCount, setNotificationCount] = useState(0);
   const [showToast, setShowToast] = useState(false);
+  const [isTokenValid, setIsTokenValid] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [showModal, setShowModal] = useState(false); // State for modal visibility
+  const [modalMessage, setModalMessage] = useState(''); // State for modal message
   const navigate = useNavigate();
   const id = sessionStorage.getItem('patientid');
 
   const Menus = [
     { title: "Appointment", src: "Chat", alt: "inbox_image", path: "/appointment" },
-    { title: "EHR", src: "User", alt: "account_image", path: "/ehr" },
+    { title: "EHR", src: "Folder", alt: "account_image", path: "/ehr" },
     { title: "Patient Engagement", src: "User", alt: "account_image", path: "/patientengagement" },
     { title: "Care Plan", src: "User", alt: "account_image", path: "/careplan" },
-    { title: "Waiting Room", src: "User", alt: "account_image", path: "/waitingroom" },
+    { title: "Waiting Room", src: "Search", alt: "account_image", path: "/waitingroom" },
   ];
 
   useEffect(() => {
@@ -66,7 +92,13 @@ const PatientNavbar = () => {
   const handleLogout = () => {
     sessionStorage.removeItem("token");
     sessionStorage.removeItem("role");
-    window.alert("Successfully Logout - Session Expired");
+    setIsTokenValid(false);
+    setModalMessage("Successfully Logout - Session Expired");
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
     navigate('/');
   };
 
@@ -170,6 +202,8 @@ const PatientNavbar = () => {
           />
         )}
       </div>
+       {/* Modal Component */}
+       <Modal isOpen={showModal} onClose={closeModal} message={modalMessage} />
     </div>
   );
 };

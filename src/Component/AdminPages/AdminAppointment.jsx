@@ -474,6 +474,7 @@ import React, { useEffect, useState } from 'react';
 import Modal from './Modal';
 import SuccessModal from './SuccessModal'; // Import the modal component
 import Spinner from './Spinner'; // Import the spinner component
+import { json } from 'react-router-dom';
 
 const AdminAppointment = () => {
   const [columns, setColumns] = useState([]);
@@ -605,6 +606,7 @@ const AdminAppointment = () => {
 
     if (recordToUpdate) {
       const updatedRecord = { ...recordToUpdate, status: 'cancel' };
+      console.log(JSON.stringify(updatedRecord));
 
       axios.post("http://localhost:1225/admin/updateAppointment", updatedRecord)
         .then(response => {

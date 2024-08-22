@@ -16,13 +16,13 @@ const Footer = () => {
 
         {/*right side */}
         <div className="flexColStart f-right">
-          <span className="primaryText">Information</span>
-          <span className="secondaryText"> Avaniyapuram,Madurai-625012</span>
+          <span className="primaryText" role="H1">Information</span>
+          <span className="secondaryText" role="H2">Avaniyapuram,Madurai-625012</span>
           <div className="flexCenter f-menu">
-            <span>Property</span>
-            <span>Service</span>
-            <span>Product</span>
-            <span>About Us</span>
+            <span role="H3">Property</span>
+            <span role="H4">Service</span>
+            <span role="H5">Product</span>
+            <span role="H6">About Us</span>
           </div>
         </div>
       </div>

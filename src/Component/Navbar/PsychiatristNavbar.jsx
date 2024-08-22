@@ -6,6 +6,27 @@ import axios from "axios";
 import Modal from './PsychiatristProfileUpdateModal'; // Import the Modal component
 import Toast from "./Toast";
 
+// Modal component (as defined earlier)
+const AlertModal = ({ isOpen, onClose, message }) => {
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+      <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full">
+        <p className="mt-4">{message}</p>
+        <div className="mt-4 flex justify-end">
+          <button
+            onClick={onClose}
+            className="bg-blue-500 text-white px-4 py-2 rounded"
+          >
+            OK
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const PsychiatristNavbar = () => {
   const [open, setOpen] = useState(true);
   const [profileOpen, setProfileOpen] = useState(false);
@@ -17,13 +38,16 @@ const PsychiatristNavbar = () => {
   const [profile, setProfile] = useState(null); // State for profile data
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showToast, setShowToast] = useState(false);
+  const [showModal, setShowModal] = useState(false); // State for modal visibility
+  const [modalMessage, setModalMessage] = useState(''); // State for modal message
   const navigate = useNavigate();
   const id = sessionStorage.getItem('psyid');
 
+
   const Menus = [
-    { title: "Patient EHR", src: "Chat", alt: "inbox_image", path: "/patientehr" },
-    { title: "View Assigned Appointments", src: "User", alt: "account_image", path: "/viewassignedappointment" },
-    { title: "Care Plan Schedule", src: "User", alt: "account_image", path: "/careplanschedule" },
+    { title: "View Assigned Appointments", src: "Search", alt: "account_image", path: "/viewassignedappointment" },
+    { title: "Patient EHR", src: "User", alt: "inbox_image", path: "/patientehr" },
+    { title: "Care Plan Assign", src: "Setting", alt: "account_image", path: "/careplanschedule" },
   ];
 
   useEffect(() => {
@@ -91,7 +115,12 @@ const PsychiatristNavbar = () => {
     sessionStorage.removeItem("token");
     sessionStorage.removeItem("role");
     setIsTokenValid(false);
-    window.alert("Successfully Logout - Session Expired");
+    setModalMessage("Successfully Logout - Session Expired");
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
     navigate('/');
   };
 
@@ -219,6 +248,8 @@ const PsychiatristNavbar = () => {
             onClose={handleToastClose}
           />
         )}
+         {/* Modal Component */}
+       <AlertModal isOpen={showModal} onClose={closeModal} message={modalMessage} />
     </div>
 
   );

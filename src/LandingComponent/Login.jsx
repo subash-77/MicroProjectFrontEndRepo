@@ -133,12 +133,12 @@ const Login = () => {
               Forgot Password?
             </a>
           </div>
-          <div className="text-center md:text-left">
+          <div className="text-center ml-36  mt-5 md:text-left">
             <button className="mt-4 bg-blue-600 hover:bg-blue-700 px-4 py-2 text-white uppercase rounded text-xs tracking-wider button" name="L-btn" type="submit">
               Login
             </button>
           </div>
-          <div className="mt-4 font-semibold text-sm text-slate-500 text-center md:text-left">
+          <div className="mt-4  ml-20 font-semibold text-sm text-slate-500 text-center md:text-left">
             Don&apos;t have an account?{" "}
             <Link className="text-red-600 hover:underline hover:underline-offset-4" to={"/register"}>
               Register
