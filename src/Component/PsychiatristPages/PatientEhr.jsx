@@ -98,7 +98,7 @@ Prescription: No prescriptions
   };
 
   return (
-    <div className="max-w-4xl ml-44 mt-1 mx-auto p-8 bg-white shadow-lg rounded-lg">
+    <div className="max-w-4xl ml-44  mx-auto  bg-white shadow-lg rounded-lg">
       <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Patient Electronic Health Records (EHR)</h1>
 
       <form onSubmit={handleSubmit} className="space-y-6">

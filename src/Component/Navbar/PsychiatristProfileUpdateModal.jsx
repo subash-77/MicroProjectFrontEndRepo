@@ -681,7 +681,7 @@ const Modal = ({ isOpen, onClose, profile, onUpdate }) => {
               />
               {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
             </div>
-            <div className="mb-4">
+            {/* <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700">Password</label>
               <input
                 type="password"
@@ -692,7 +692,7 @@ const Modal = ({ isOpen, onClose, profile, onUpdate }) => {
                 className="mt-1 block w-full border-gray-300 rounded-md shadow-sm sm:text-sm px-3 py-2"
               />
               {errors.password && <p className="text-red-500 text-xs mt-1">{errors.password}</p>}
-            </div>
+            </div> */}
             <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700">Specialization</label>
               <input

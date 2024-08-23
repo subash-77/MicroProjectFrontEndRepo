@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, Outlet, useNavigate } from 'react-router-dom';
-import { FaBell, FaUser } from "react-icons/fa";
+import { FaBell, FaSignOutAlt, FaUser } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
 import axios from "axios";
 import Toast from './Toast';
@@ -55,6 +55,7 @@ const PatientNavbar = () => {
         handleLogout();
       }
     }
+    navigate('/appointment');
   }, []);
 
   useEffect(() => {
@@ -117,16 +118,14 @@ const PatientNavbar = () => {
         <img
           src="./control.png"
           alt="control_image"
-          className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple border-2 rounded-full transition-transform duration-300 ${
-            !open && "rotate-180"
-          }`}
+          className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple border-2 rounded-full transition-transform duration-300 ${!open && "rotate-180"
+            }`}
           onClick={() => setOpen(!open)}
         />
         <div className="flex gap-x-4 items-center">
           <h1
-            className={`text-white origin-left font-medium text-xl transition-transform duration-300 ${
-              !open && "scale-0"
-            }`}
+            className={`text-white origin-left font-medium text-xl transition-transform duration-300 ${!open && "scale-0"
+              }`}
           >
             Patient
           </h1>
@@ -135,9 +134,8 @@ const PatientNavbar = () => {
           {Menus.map((Menu, index) => (
             <li
               key={index}
-              className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 ${
-                index === 0 && "bg-light-white"
-              }`}
+              className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 ${index === 0 && "bg-light-white"
+                }`}
             >
               <Link to={Menu.path} className="flex items-center gap-x-4">
                 <img src={`./${Menu.src}.png`} alt={`${Menu.alt}`} />
@@ -147,6 +145,13 @@ const PatientNavbar = () => {
               </Link>
             </li>
           ))}
+          <Link className="flex items-center gap-x-4 mt-10 p-2.5">
+            {/* <img src={`User.png`}  /> */}
+            <FaSignOutAlt size={24} className="text-white size-5" onClick={handleLogout} />
+            <span className={`${!open && "hidden"} origin-left transition-transform duration-300 text-gray-50`} onClick={handleLogout}>
+              Logout
+            </span>
+          </Link>
         </ul>
       </div>
 
@@ -202,8 +207,8 @@ const PatientNavbar = () => {
           />
         )}
       </div>
-       {/* Modal Component */}
-       <Modal isOpen={showModal} onClose={closeModal} message={modalMessage} />
+      {/* Modal Component */}
+      <Modal isOpen={showModal} onClose={closeModal} message={modalMessage} />
     </div>
   );
 };

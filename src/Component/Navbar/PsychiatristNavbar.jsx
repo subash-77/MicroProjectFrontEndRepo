@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, Outlet, useNavigate } from 'react-router-dom';
-import { FaBell, FaUser } from "react-icons/fa";
+import { FaBell, FaSignOutAlt, FaUser } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
 import axios from "axios";
 import Modal from './PsychiatristProfileUpdateModal'; // Import the Modal component
@@ -62,6 +62,7 @@ const PsychiatristNavbar = () => {
     } else {
       setIsLoggedIn(false);
     }
+    navigate('/viewassignedappointment');
   }, []);
 
   useEffect(() => {
@@ -182,6 +183,13 @@ const PsychiatristNavbar = () => {
               </Link>
             </li>
           ))}
+          <Link className="flex items-center gap-x-4 mt-10 p-2.5">
+            {/* <img src={`User.png`}  /> */}
+            <FaSignOutAlt size={24} className="text-white size-5" onClick={handleLogout} />
+            <span className={`${!open && "hidden"} origin-left transition-transform duration-300 text-gray-50`} onClick={handleLogout}>
+              Logout
+            </span>
+          </Link>
         </ul>
       </div>
 
@@ -227,7 +235,7 @@ const PsychiatristNavbar = () => {
         </div>
 
         {/* Rendered Content Area */}
-        <main className="flex-1 overflow-auto mt-30"> {/* Adjust mt-16 based on top bar height */}
+        <main className="flex-1 overflow-auto mt-16"> {/* Adjust mt-16 based on top bar height */}
           <Outlet /> {/* This is where the route components will be rendered */}
         </main>
       </div>

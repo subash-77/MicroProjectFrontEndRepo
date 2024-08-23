@@ -67,12 +67,14 @@ const EHR = () => {
 
   return (
     <div className="p-6 max-w-5xl mx-auto">
-      <h1 className="text-3xl font-bold text-center mb-8">EHR Records for Patient ID: {patientId}</h1>
+      {/* <h1 className="text-3xl font-bold text-center mb-8">EHR Records for Patient ID: {patientId}</h1> */}
+      <h1 className="text-3xl font-bold text-center mb-8">EHR Records For Patient</h1>
       {ehrRecords.length > 0 ? (
         <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {ehrRecords.map(record => (
             <div key={record.recordId} className="bg-white shadow-md rounded-lg p-6 flex flex-col border border-gray-200">
-              <h2 className="text-2xl font-semibold mb-4 text-gray-800">Record ID: {record.recordId}</h2>
+              {/* <h2 className="text-2xl font-semibold mb-4 text-gray-800">Record ID: {record.recordId}</h2> */}
+              <h2 className="text-2xl font-semibold mb-4 text-gray-800">Record </h2>
               <p className="text-gray-700 mb-2">
                 <strong>Prescription:</strong>
                 <button
